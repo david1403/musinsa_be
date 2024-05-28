@@ -1,7 +1,5 @@
 package com.musinsa.model.dto.request;
 
-import com.musinsa.model.dto.common.CategoryDto;
-import com.musinsa.model.dto.common.ProductDto;
 import lombok.Data;
 
 import java.util.List;

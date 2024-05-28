@@ -58,6 +58,7 @@ public class ProductService {
         return productRepository.save(product);
     }
 
+    @Transactional
     public Product modifyProduct(long productId, long price) {
         Product product = productRepository.findById(productId).orElseThrow(
                 () -> new MusinsaApiException(ErrorCode.PRODUCT_NOT_FOUND_BY_PRODUCT_ID)
@@ -66,6 +67,7 @@ public class ProductService {
         return product;
     }
 
+    @Transactional
     public void deleteProduct(long productId) {
         Product product = productRepository.findById(productId).orElseThrow(
                 () -> new MusinsaApiException(ErrorCode.PRODUCT_NOT_FOUND_BY_PRODUCT_ID)

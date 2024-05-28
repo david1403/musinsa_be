@@ -22,6 +22,13 @@ public class BrandRegistrationService {
     private final CategoryService categoryService;
     private final ProductService productService;
 
+    /**
+     * method used when admin registers a new brand
+     * @throws MusinsaApiException
+     *         if a brand that has brandName with the request already exists,
+     *         if productMap does not cover all categories
+     * @param brandRegisterRequestDto the registered brandName and productLists of that brand
+     */
     @Transactional
     public void registerBrand(BrandRegisterRequestDto brandRegisterRequestDto) {
         if (brandService.hasDuplicateBrandName(brandRegisterRequestDto.getBrandName())) {

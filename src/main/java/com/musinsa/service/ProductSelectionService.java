@@ -28,6 +28,10 @@ public class ProductSelectionService {
     private final CategoryConverter categoryConverter;
     private final ProductConverter productConverter;
 
+    /**
+     * Returns the cheapest products of all categories
+     * @return The productMap of categories and products, with the total price.
+     */
     public ProductsByCategoryResponseDto findCheapestProducts() {
         ProductsByCategoryResponseDto responseDto = ProductsByCategoryResponseDto.builder()
                 .productInfoMap(new HashMap<>())
@@ -49,6 +53,10 @@ public class ProductSelectionService {
         return responseDto;
     }
 
+    /**
+     * Returns the cheapest brand, when selecting at least 1 product from every category of that brand.
+     * @return the brandName, totalPrice and products included in the brand set.
+     */
     public BrandProductSetResponseDto findCheapestBrandSet() {
         BrandProductSetResponseDto response = BrandProductSetResponseDto.builder()
                 .brandName(null)
@@ -72,6 +80,13 @@ public class ProductSelectionService {
         return response;
     }
 
+    /**
+     * Returns the products in category that are the cheapest and most expensive.
+     * @throws MusinsaApiException
+     *          if category with categoryName does not exist.
+     * @param categoryName
+     * @return the categoryName, and the product info
+     */
     public ProductsBySpecificCategoryResponseDto findProductsByCategoryName(String categoryName) {
         Category category = categoryService.findByCategoryName(categoryName);
 
